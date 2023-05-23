@@ -1,22 +1,166 @@
-.HomeDetails {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 6vh 35vh 1fr;
-  font-size: 2rem;
-  margin: 2rem;
-  border: 2px solid black;
+@media (max-width: 650px) {
+  .Details > .figureDetails > .NameMotoDetails > h3 {
+    font-size: 1.5rem;
+  }
+  .Details > .figureDetails > img {
+    height: 6em;
+  }
+  .Details > .figureDetails > .price {
+    padding: 0.4rem;
+    width: 4rem;
+    font-size: 1rem;
+    margin-top: 2rem;
+    margin-left: 5rem;
+  }
+  .Details > .figureDetails > .infoMotoDetails {
+    display: flex;
+    place-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .Details > .figureDetails > .infoMotoDetails > h3 {
+    font-size: 0.7rem;
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+  }
+  .Details > .figureDetails > .infoMotoDetails > .company {
+    padding: 0.3rem;
+    width: 5rem;
+  }
+
+  .year {
+    padding: 0.3rem;
+    width: 3rem;
+  }
+  .type {
+    padding: 0.3rem;
+    width: 3rem;
+  }
+  .Details > .figureDetails > .infoMotoDetails > .km {
+    padding: 0.4rem;
+    width: 4.7rem;
+  }
+  .Details > .figureDetails > .infoMotoDetails > .cc {
+    padding: 0.4rem;
+    width: 5rem;
+  }
+  .Details > .figureDetails > .infoMotoDetails > .carnet {
+    padding: 0.4rem;
+    width: 4.5rem;
+  }
+  .Details > .figureDetails > .infoMotoDetails > .fuel {
+    padding: 0.3rem;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.Details {
+  justify-content: center;
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
-img {
-  height: 35rem;
+.figureDetails > img {
+  height: 20rem;
+  justify-content: center;
 }
 .NameMotoDetails {
-  grid-column: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
 }
 .NameMotoDetails > h3 {
-  font-size: 3rem;
+  font-size: 2.4rem;
+}
+.infoMotoDetails {
+  width: 100%;
+  display: flex;
+  place-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.infoMotoDetails > h3 {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 8px;
+  width: 6rem;
+  font-size: 1.5rem;
+  box-shadow: -2px 2px 15px 2px rgb(184, 178, 178);
+}
+span {
+  font-size: 0.8rem;
+  padding: 0.5rem;
+}
+
+.year {
+  padding: 0.4rem;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  width: 4.5rem;
+  box-shadow: -2px 2px 15px 2px rgb(184, 178, 178);
+}
+.type {
+  padding: 0.4rem;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  width: 5rem;
+  box-shadow: -2px 2px 15px 2px rgb(184, 178, 178);
+}
+.km {
+  padding: 0.4rem;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  width: 6rem;
+  box-shadow: -2px 2px 15px 2px rgb(184, 178, 178);
+}
+.cc {
+  padding: 0.4rem;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  width: 5rem;
+  box-shadow: -2px 2px 15px 2px rgb(184, 178, 178);
+}
+.company {
+  padding: 0.5rem;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  width: 6rem;
+  box-shadow: -2px 2px 15px 2px rgb(184, 178, 178);
+}
+.carnet {
+  padding: 0.4rem;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  width: 5rem;
+  box-shadow: -2px 2px 15px 2px rgb(184, 178, 178);
+}
+.fuel {
+  padding: 0.4rem;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  width: 4rem;
+  box-shadow: -2px 2px 15px 2px rgb(184, 178, 178);
+}
+.cv {
+  padding: 0.4rem;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  width: 5rem;
+  box-shadow: -2px 2px 15px 2px rgb(184, 178, 178);
 }

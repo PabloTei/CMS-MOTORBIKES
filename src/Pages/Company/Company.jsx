@@ -69,7 +69,7 @@ const Company = () => {
       !newMoto.company ||
       !newMoto.fuel
     ) {
-      setError('faltan datos');
+      setError('Incomplete form');
     } else {
       setError(null);
       fetch('https://63ed61e93d9c852c3f59f7e0.mockapi.io/motos', {
@@ -117,86 +117,108 @@ const Company = () => {
   }, []);
 
   return (
-    <main className="Company">
-      <div>
+    <main className="main-gap">
+      <h1>¡Welcome, {user}!</h1>
+      <div className="Company">
         {loaded ? (
           motos.map((moto) => (
             <div key={moto.id}>
               <MotoCard moto={moto} />
-              <button onClick={() => deleteMoto(moto.id)}>Delete</button>
-              <button onClick={() => setEditMoto(moto)}>Edit</button>
+              <div className="buttonCompany">
+                <button className="enter" onClick={() => deleteMoto(moto.id)}>
+                  Delete
+                </button>
+                <button className="enter" onClick={() => setEditMoto(moto)}>
+                  Edit
+                </button>
+              </div>
             </div>
           ))
         ) : (
           <p>Cargando...</p>
         )}
       </div>
-      <div>
-        <form onSubmit={(ev) => createMotos(ev)}>
-          {typesText.map((info) => (
-            <InputCreate
-              type={info}
-              key={info}
-              action={(ev) => {
-                setNewMoto({ ...newMoto, [info]: ev.target.value });
-              }}
-            />
-          ))}
-          <input
-            type="text"
-            value={user}
-            disabled
+      <div className="create-edit">
+        <div className="section_form">
+          <h2>CREATE MOTO</h2>
+          <form className="create feed-form" onSubmit={(ev) => createMotos(ev)}>
+            {typesText.map((info) => (
+              <InputCreate
+                type={info}
+                key={info}
+                action={(ev) => {
+                  setNewMoto({ ...newMoto, [info]: ev.target.value });
+                }}
+              />
+            ))}
+            {/* <input
+              className="inputBox"
+              type="text"
+              value={user}
+              disabled
 
-            //  setNewMoto({...newMoto, company:value})
-            // onChange={(ev) => setNewMoto({ ...newMoto, company: ev.target.value })}
-          />
-          <SelectCreate
-            options={fuel}
-            action={(ev) => setNewMoto({ ...newMoto, fuel: ev.target.value })}
-          />
-          <SelectCreate
-            options={carnet}
-            action={(ev) => setNewMoto({ ...newMoto, carnet: ev.target.value })}
-          />
-          <SelectCreate
-            options={type}
-            action={(ev) => setNewMoto({ ...newMoto, type: ev.target.value })}
-          />
-
-          <button onClick={() => console.log(newMoto)} type="submit">
-            Create
-          </button>
-        </form>
-        {error && <h3>{error}</h3>}
-        <h2>EDIT MOTO</h2>
-        <form onSubmit={(ev) => handleEditMoto(ev, editMoto.id)}>
-          {typesText.map((info) => (
-            <InputEdit
-              value={editMoto[info]}
-              type={info}
-              key={info}
-              action={(ev) => {
-                setEditMoto({ ...editMoto, [info]: ev.target.value });
-              }}
+              //  setNewMoto({...newMoto, company:value})
+              // onChange={(ev) => setNewMoto({ ...newMoto, company: ev.target.value })}
+            /> */}
+            <SelectCreate
+              options={fuel}
+              action={(ev) => setNewMoto({ ...newMoto, fuel: ev.target.value })}
             />
-          ))}
-          <SelectEdit
-            value={editMoto.fuel}
-            options={fuel}
-            action={(ev) => setEditMoto({ ...editMoto, fuel: ev.target.value })}
-          />
-          <SelectEdit
-            value={editMoto.carnet}
-            options={carnet}
-            action={(ev) => setEditMoto({ ...editMoto, carnet: ev.target.value })}
-          />
-          <SelectEdit
-            value={editMoto.type}
-            options={type}
-            action={(ev) => setEditMoto({ ...editMoto, type: ev.target.value })}
-          />
-          <button type="submit">Edit</button>
-        </form>
+            <SelectCreate
+              options={carnet}
+              action={(ev) => setNewMoto({ ...newMoto, carnet: ev.target.value })}
+            />
+            <SelectCreate
+              options={type}
+              action={(ev) => setNewMoto({ ...newMoto, type: ev.target.value })}
+            />
+
+            <button
+              className="enter button_submit"
+              onClick={() => console.log(newMoto)}
+              type="submit"
+            >
+              Create
+            </button>
+          </form>
+          {error && <h3>{error}</h3>}
+        </div>
+        <div className="section_form">
+          <h2>EDIT MOTO</h2>
+          <form
+            className="edit feed-form"
+            onSubmit={(ev) => handleEditMoto(ev, editMoto.id)}
+          >
+            {typesText.map((info) => (
+              <InputEdit
+                value={editMoto[info]}
+                type={info}
+                key={info}
+                action={(ev) => {
+                  setEditMoto({ ...editMoto, [info]: ev.target.value });
+                }}
+              />
+            ))}
+            <SelectEdit
+              value={editMoto.fuel}
+              options={fuel}
+              action={(ev) => setEditMoto({ ...editMoto, fuel: ev.target.value })}
+            />
+            <SelectEdit
+              value={editMoto.carnet}
+              options={carnet}
+              action={(ev) => setEditMoto({ ...editMoto, carnet: ev.target.value })}
+            />
+            <SelectEdit
+              value={editMoto.type}
+              options={type}
+              action={(ev) => setEditMoto({ ...editMoto, type: ev.target.value })}
+            />
+            <button className="enter button_submit" type="submit">
+              Edit
+            </button>
+          </form>
+        </div>
       </div>
     </main>
   );

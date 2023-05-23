@@ -3,13 +3,13 @@ import './Home.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-//import { useDebounce } from 'use-debounce';
 import MotoCard from '../../components/MotoCard/Motocard';
+import useDebounce from '../../hook/useDebounce';
 
 const Home = () => {
   const [motos, setMotos] = useState([]);
   const [filter, setFilter] = useState([]);
-  //const debounceValue = useDebounce(filter, 1000);
+  const debounceValue = useDebounce(filter, 1000);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,11 @@ const Home = () => {
   }, []);
 
   const filterFunction = (value) => {
-    const arrayFilter = motos.filter((moto) => moto.name.toLowerCase().includes(value));
+    const arrayFilter = motos.filter(
+      (moto) =>
+        moto.name.toLowerCase().includes(value) ||
+        moto.brand.toLowerCase().includes(value),
+    );
     setFilter(arrayFilter);
   };
 
@@ -32,9 +36,9 @@ const Home = () => {
         placeholder="Search..."
         onChange={(ev) => filterFunction(ev.target.value.toLowerCase())}
       />
-      <div>
+      <div className="grid">
         {loaded ? (
-          filter.map((moto) => <MotoCard key={moto.id} moto={moto} />)
+          debounceValue.map((moto) => <MotoCard key={moto.id} moto={moto} />)
         ) : (
           <p>Cargando...</p>
         )}
